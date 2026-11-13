@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased selection:bg-brand-500 selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html, body, #root {
+    height: 100%;
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/20 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:pointer-events-none;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-slate-200 transition-all hover:bg-white/10 active:scale-95;
+  }
+  .input {
+    @apply block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all;
+  }
+  .label {
+    @apply block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    @apply text-brand-400;
+  }
+  .text-income {
+    @apply text-green-400;
+  }
+  .text-expense {
+    @apply text-red-400;
+  }
+  .tab-active {
+    @apply text-brand-400 border-b-2 border-brand-400;
+  }
+  .tab-inactive {
+    @apply text-slate-400 border-b-2 border-transparent;
+  }
+}
