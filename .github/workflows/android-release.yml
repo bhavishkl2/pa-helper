@@ -22,6 +22,16 @@ jobs:
           channel: stable
           cache: true
 
+      # The checked-in Android folder was created with an unsupported
+      # Gradle layout. Generate a fresh platform scaffold while preserving
+      # the actual Flutter app source and dependencies.
+      - name: Regenerate Android platform
+        shell: bash
+        run: |
+          flutter create --platforms=android --project-name pa_helper --org com.example /tmp/pa_helper_scaffold
+          rm -rf android
+          cp -R /tmp/pa_helper_scaffold/android ./android
+
       - name: Install dependencies
         run: flutter pub get
 
