@@ -1,7 +1,8 @@
-* /build/
+/build/
 * /local.properties
-* /.dart_tool/
-* /.flutter-plugins
+/.dart_tool/
+/.flutter-plugins
+/.flutter-plugins-dependencies
 * .dart_tool/package_config.json
 *.iml
 .idea/
