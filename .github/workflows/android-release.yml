@@ -31,6 +31,17 @@ jobs:
           flutter create --platforms=android --project-name pa_helper --org com.example /tmp/pa_helper_scaffold
           rm -rf android
           cp -R /tmp/pa_helper_scaffold/android ./android
+          python3 - <<'PY'
+          from pathlib import Path
+          manifest = Path("android/app/src/main/AndroidManifest.xml")
+          content = manifest.read_text()
+          content = content.replace(
+              '>',
+              '>\\n    <uses-permission android:name="android.permission.CAMERA" />\\n    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />',
+              1,
+          )
+          manifest.write_text(content)
+          PY
 
       - name: Install dependencies
         run: flutter pub get
