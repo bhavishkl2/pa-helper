@@ -37,7 +37,7 @@ jobs:
           content = manifest.read_text()
           content = content.replace(
               '>',
-              '>\\n    <uses-permission android:name="android.permission.CAMERA" />\\n    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />',
+              '>' + chr(10) + '    <uses-permission android:name="android.permission.CAMERA" />' + chr(10) + '    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />',
               1,
           )
           manifest.write_text(content)
