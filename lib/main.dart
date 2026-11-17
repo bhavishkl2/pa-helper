@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<_PermissionItem> _permissions = [
     _PermissionItem(
-      permission: Permission.systemAlertWindows,
+      permission: Permission.systemAlertWindow,
       label: 'Display over other apps',
       subtitle: 'Show content above other apps',
       icon: Icons.screen_share_rounded,
@@ -162,9 +162,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadStatuses() async {
-    final statuses = await Permission.statuses(
-      _permissions.map((p) => p.permission).toList(),
-    );
+    final statuses = <Permission, PermissionStatus>{};
+    for (final item in _permissions) {
+      statuses[item.permission] = await item.permission.status;
+    }
     if (!mounted) return;
     setState(() {
       _statuses.addAll(statuses);
